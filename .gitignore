@@ -8,3 +8,16 @@ dist/
 build/
 .DS_Store
 *.log
+# Backend environment and secrets
+backend/.env
+backend/venv/
+
+# Frontend dependencies
+frontend/node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store

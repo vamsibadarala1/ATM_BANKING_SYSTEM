@@ -1,0 +1,9 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+mysql-connector-python==9.2.0
+python-jose[cryptography]==3.4.0
+pydantic==2.10.6
+python-dotenv==1.0.1
+httpx==0.28.1
+pytest==8.3.5
+email-validator==2.2.0
