@@ -1,0 +1,1429 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #eaf4ff;
+  background: #101820;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 30%, #26394c 0%, #111c28 48%, #080e14 100%);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+/* ==========================================
+   PHYSICAL ATM MACHINE
+========================================== */
+
+.atm-page {
+  min-height: 100vh;
+  padding: 34px 14px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.atm-machine {
+  width: min(100%, 1020px);
+  padding: 20px 22px 25px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #424d59, #222d38 40%, #151e27);
+  border: 1px solid #647180;
+  box-shadow:
+    0 35px 80px #0009,
+    inset 0 2px 3px #ffffff35,
+    inset 0 -5px 12px #0008;
+}
+
+.machine-top {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 17px;
+}
+
+.machine-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-symbol {
+  width: 53px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(145deg, #1684da, #06467f);
+  border: 1px solid #6bbdff;
+  font: 800 19px Manrope;
+  box-shadow: 0 0 18px #1684da55;
+}
+
+.machine-brand strong,
+.machine-brand span {
+  display: block;
+}
+
+.machine-brand strong {
+  font: 800 14px Manrope;
+  letter-spacing: 1.2px;
+  color: #f3f8ff;
+}
+
+.machine-brand span {
+  font: 10px 'DM Mono', monospace;
+  color: #a9bacb;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
+}
+
+.machine-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 10px 'DM Mono', monospace;
+  color: #b7c8d9;
+  letter-spacing: 1px;
+}
+
+.indicator-light,
+.hardware-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #32e28d;
+  box-shadow: 0 0 12px #32e28d;
+}
+
+.machine-bezel {
+  padding: 15px;
+  background: linear-gradient(145deg, #0a1017, #202b37);
+  border: 2px solid #536171;
+  border-radius: 18px;
+  box-shadow:
+    inset 0 0 0 3px #090e13,
+    0 7px 15px #0008;
+}
+
+.screen {
+  min-height: 580px;
+  overflow: hidden;
+  position: relative;
+  color: #eaf5ff;
+  background:
+    radial-gradient(ellipse at 50% 0%, #164d7e 0%, transparent 65%),
+    linear-gradient(145deg, #08213b, #071729 70%, #061321);
+  border: 1px solid #2779b5;
+  border-radius: 7px;
+  box-shadow:
+    inset 0 0 45px #0078c522,
+    0 0 20px #0b77c522;
+}
+
+.customer-screen {
+  padding: 17px 25px 15px;
+}
+
+.hardware {
+  display: grid;
+  grid-template-columns: 115px 1fr 160px;
+  gap: 20px;
+  padding: 22px 12px 0;
+}
+
+.hardware-side,
+.hardware-center {
+  min-width: 0;
+}
+
+.speaker-grille {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  width: 75px;
+  margin: 0 auto 20px;
+}
+
+.speaker-grille span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111923;
+  box-shadow: inset 0 1px 2px #000;
+}
+
+.hardware-label {
+  color: #93a2b2;
+  font: 9px 'DM Mono', monospace;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.side-buttons {
+  display: grid;
+  gap: 12px;
+  width: 60px;
+  margin: auto;
+}
+
+.side-buttons span {
+  height: 22px;
+  border-radius: 5px;
+  background: linear-gradient(#d4dce4, #667482);
+  border: 1px solid #26313d;
+  box-shadow: 0 3px 3px #0008;
+}
+
+.hardware-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.hardware-section {
+  min-width: 120px;
+  text-align: center;
+  color: #a8b8c8;
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.hardware-section b {
+  display: block;
+  margin: 0 0 9px;
+}
+
+.card-reader-slot,
+.receipt-slot,
+.cash-slot {
+  width: 110px;
+  height: 15px;
+  margin: auto;
+  border-radius: 3px;
+  background: #05090d;
+  border: 2px solid #657281;
+  box-shadow: inset 0 2px 5px #000;
+}
+
+.card-reader-slot span,
+.cash-slot span {
+  display: block;
+  width: 75%;
+  height: 3px;
+  background: #283b4d;
+  margin: 4px auto;
+}
+
+.receipt-slot {
+  width: 85px;
+}
+
+.cash-slot {
+  width: 145px;
+  height: 25px;
+}
+
+.cash-slot span {
+  margin-top: 7px;
+}
+
+.hardware-led {
+  display: block;
+  margin: 0 auto 8px;
+  width: 6px;
+  height: 6px;
+}
+
+.physical-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 35px);
+  justify-content: center;
+  gap: 7px;
+}
+
+.physical-keypad span {
+  height: 25px;
+  display: grid;
+  place-items: center;
+  color: #172331;
+  font: 700 11px 'DM Mono', monospace;
+  border-radius: 4px;
+  background: linear-gradient(#e5eaf0, #8b9aa8);
+  box-shadow: 0 3px 3px #0009;
+}
+
+.right-hardware .speaker-grille {
+  margin-bottom: 20px;
+}
+
+/* ==========================================
+   WELCOME AND LOGIN SCREEN
+========================================== */
+
+.login-machine {
+  max-width: 760px;
+}
+
+.welcome-screen {
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 28px;
+}
+
+.screen-bank-logo {
+  width: 78px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid #62baff;
+  background: linear-gradient(145deg, #178ce0, #06477e);
+  font: 800 27px Manrope;
+  box-shadow: 0 0 30px #178ce055;
+  margin-bottom: 23px;
+}
+
+.screen-overline {
+  font: 11px 'DM Mono', monospace;
+  color: #82c9ff;
+  letter-spacing: 3px;
+}
+
+.welcome-screen h1 {
+  font: 800 clamp(30px, 6vw, 49px) Manrope;
+  letter-spacing: 2px;
+  margin: 10px 0;
+  color: white;
+}
+
+.screen-description {
+  font-size: 14px;
+  color: #a9c7df;
+}
+
+.card-animation {
+  margin: 23px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.demo-card {
+  width: 155px;
+  height: 92px;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e5edf2, #91a9ba);
+  color: #20364b;
+  box-shadow: 0 10px 25px #0006;
+  animation: cardMove 2.3s infinite alternate ease-in-out;
+}
+
+.demo-card span {
+  font: 800 10px Manrope;
+}
+
+.demo-card small {
+  font: 10px 'DM Mono', monospace;
+}
+
+.card-chip {
+  width: 24px;
+  height: 18px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #d7c47c, #8d7841);
+}
+
+.card-slot {
+  width: 70px;
+  height: 14px;
+  border-radius: 4px;
+  background: #02080d;
+  border: 1px solid #7991a7;
+  padding-top: 5px;
+}
+
+.card-slot span {
+  display: block;
+  width: 80%;
+  height: 2px;
+  background: #1c405b;
+  margin: auto;
+}
+
+@keyframes cardMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(12px); }
+}
+
+.screen-button {
+  min-height: 45px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: 1px solid #62baff;
+  color: white;
+  background: linear-gradient(135deg, #1688d7, #07528e);
+  font: 700 11px 'DM Mono', monospace;
+  letter-spacing: .8px;
+  box-shadow: 0 5px 14px #001b3580;
+  transition: .2s;
+}
+
+.screen-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #29a3f3, #0967ae);
+  transform: translateY(-1px);
+}
+
+.insert-button {
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.insert-button span {
+  font-size: 19px;
+}
+
+.screen-footnote {
+  margin-top: 25px;
+  color: #799bb9;
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.admin-entry {
+  border: 0;
+  background: transparent;
+  color: #83bce7;
+  text-decoration: underline;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+/* ==========================================
+   PIN LOGIN SCREEN
+========================================== */
+
+.pin-screen {
+  max-width: 480px;
+  margin: auto;
+  padding: 35px 15px 20px;
+}
+
+.screen-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.screen-heading h2 {
+  font: 800 24px Manrope;
+  margin: 10px 0;
+}
+
+.screen-heading p {
+  color: #a9c7df;
+  font-size: 12px;
+}
+
+.pin-screen label,
+.atm-label {
+  display: block;
+  color: #91c9f3;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  margin: 17px 0 8px;
+}
+
+.pin-screen input,
+.atm-input,
+.atm-select {
+  width: 100%;
+  min-height: 43px;
+  border: 1px solid #3978a7;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px 13px;
+  color: #fff;
+  background: #071a2b;
+}
+
+.pin-screen input:focus,
+.atm-input:focus,
+.atm-select:focus {
+  border-color: #53b5fa;
+  box-shadow: 0 0 0 3px #1688d733;
+}
+
+.pin-display {
+  height: 47px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 10px 0 15px;
+  background: #061522;
+  border: 1px solid #245b83;
+  border-radius: 5px;
+  font-size: 19px;
+  color: #55b7ff;
+}
+
+.pin-display small {
+  font: 10px 'DM Mono', monospace;
+}
+
+.atm-keypad {
+  width: min(100%, 285px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px auto;
+}
+
+.atm-keypad button {
+  height: 43px;
+  border: 1px solid #4d7291;
+  border-radius: 5px;
+  background: linear-gradient(#244966, #15334d);
+  color: white;
+  font: 700 16px 'DM Mono', monospace;
+  box-shadow: 0 3px 4px #0005;
+}
+
+.atm-keypad button:hover {
+  background: #2875aa;
+}
+
+.atm-keypad .key-clear {
+  font-size: 10px;
+  background: #763b35;
+}
+
+.screen-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.screen-actions .screen-button {
+  flex: 1;
+}
+
+.secondary-screen-button {
+  border-color: #8c9ba8;
+  background: linear-gradient(#5d6c79, #35424e);
+}
+
+.screen-error {
+  padding: 10px;
+  color: #ffd4d1;
+  background: #7b292b55;
+  border: 1px solid #bd5555;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+/* ==========================================
+   CUSTOMER SCREEN HEADER AND FOOTER
+========================================== */
+
+.screen-status,
+.screen-userbar,
+.screen-page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.screen-status {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ffffff20;
+  color: #83bde7;
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.screen-userbar {
+  padding: 15px 0;
+}
+
+.screen-userbar small,
+.screen-userbar strong {
+  display: block;
+}
+
+.screen-userbar small {
+  font: 9px 'DM Mono', monospace;
+  color: #83bde7;
+  margin-bottom: 4px;
+}
+
+.screen-userbar strong {
+  font: 700 14px Manrope;
+  text-transform: uppercase;
+}
+
+.screen-userbar button,
+.small-screen-button {
+  color: #ffc8c4;
+  background: #733b3d;
+  border: 1px solid #bd6868;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font: 10px 'DM Mono', monospace;
+}
+
+.screen-page-title {
+  background: #0d3455;
+  border: 1px solid #22577d;
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin: 4px 0 18px;
+  font: 700 11px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.screen-time-label {
+  color: #8bb7d7;
+  font-size: 9px;
+}
+
+.screen-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #ffffff20;
+  padding-top: 13px;
+  margin-top: 20px;
+  color: #6f9bbd;
+  font: 8px 'DM Mono', monospace;
+  letter-spacing: .7px;
+}
+
+/* ==========================================
+   ATM MAIN MENU
+========================================== */
+
+.welcome-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 23px;
+  border: 1px solid #3185bd;
+  border-radius: 6px;
+  background: linear-gradient(110deg, #07508a, #0c3155);
+  box-shadow: inset 0 0 25px #31a6ff20;
+}
+
+.welcome-banner small {
+  color: #a8d9ff;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+}
+
+.welcome-banner h2 {
+  margin: 8px 0;
+  font: 800 clamp(23px, 4vw, 35px) Manrope;
+}
+
+.welcome-banner span {
+  color: #a5c9e5;
+  font: 10px 'DM Mono', monospace;
+}
+
+.balance-symbol {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #73c8ff;
+  color: white;
+  font: 700 27px Manrope;
+  background: #ffffff12;
+}
+
+.menu-instruction {
+  margin: 23px 0 13px;
+  text-align: center;
+  color: #8ecfff;
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 2px;
+}
+
+.atm-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.atm-menu-button {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px;
+  color: white;
+  text-align: left;
+  background: linear-gradient(110deg, #123d60, #0d2c48);
+  border: 1px solid #3975a0;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.atm-menu-button:hover {
+  border-color: #80ceff;
+  background: linear-gradient(110deg, #1b6496, #12436b);
+  transform: translateY(-2px);
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #ffffff13;
+  border: 1px solid #ffffff2b;
+  color: #8dd2ff;
+  font: 700 22px Manrope;
+}
+
+.atm-menu-button > span:nth-child(2) {
+  flex: 1;
+  font: 700 10px 'DM Mono', monospace;
+  letter-spacing: .5px;
+}
+
+.atm-menu-button b {
+  color: #77c9ff;
+  font-size: 22px;
+}
+
+.screen-tip {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 17px;
+  padding: 12px;
+  color: #a9c9df;
+  background: #ffffff0b;
+  border: 1px solid #ffffff1b;
+  font-size: 10px;
+}
+
+/* ==========================================
+   TRANSACTION SCREENS
+========================================== */
+
+.transaction-screen {
+  max-width: 610px;
+  margin: auto;
+  padding: 12px 5px 15px;
+}
+
+.transaction-instructions {
+  text-align: center;
+  padding: 12px 5px 18px;
+}
+
+.instruction-icon,
+.result-icon {
+  width: 53px;
+  height: 53px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 13px;
+  border-radius: 50%;
+  border: 1px solid #56baff;
+  color: #9bd8ff;
+  background: #1686ca25;
+  font: 700 24px Manrope;
+}
+
+.transaction-instructions h2 {
+  font: 800 19px Manrope;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.transaction-instructions p {
+  color: #a5c3da;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.amount-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 15px;
+  background: #061827;
+  border: 1px solid #3e85b5;
+  border-radius: 5px;
+  color: #8ed0ff;
+  font: 700 25px Manrope;
+}
+
+.amount-display input {
+  min-width: 0;
+  flex: 1;
+  height: 52px;
+  color: white;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: 700 25px 'DM Mono', monospace;
+}
+
+.amount-display input::placeholder {
+  color: #54728c;
+}
+
+.amount-display input::-webkit-inner-spin-button,
+.amount-display input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.preset-label {
+  margin: 17px 0 10px;
+  color: #87bde1;
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.preset-grid button {
+  padding: 13px 5px;
+  border-radius: 4px;
+  color: #e4f4ff;
+  border: 1px solid #3a7199;
+  background: #153b59;
+  font: 700 11px 'DM Mono', monospace;
+}
+
+.preset-grid button:hover {
+  background: #17649b;
+}
+
+.validation-message {
+  color: #ffd0a5;
+  font-size: 11px;
+}
+
+.atm-select,
+.atm-input {
+  margin-bottom: 9px;
+  font-size: 12px;
+}
+
+.atm-select option {
+  color: #17243a;
+  background: white;
+}
+
+.transaction-result {
+  text-align: center;
+  padding: 35px 10px;
+  border: 1px solid #3479a5;
+  background: #0b2b46;
+  border-radius: 6px;
+}
+
+.transaction-result small {
+  display: block;
+  color: #8fc9ef;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.transaction-result h2 {
+  font: 800 clamp(26px, 5vw, 38px) Manrope;
+  margin: 12px 0;
+}
+
+.transaction-result p {
+  color: #a8c7dc;
+  font-size: 11px;
+}
+
+.result-status {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 3px;
+  background: #146346;
+  color: #a7f4ce;
+  font: 9px 'DM Mono', monospace;
+}
+
+/* ==========================================
+   MINI STATEMENT
+========================================== */
+
+.statement-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.statement-heading h2 {
+  font: 800 16px Manrope;
+  margin: 0;
+}
+
+.statement-heading p {
+  font: 9px 'DM Mono', monospace;
+  color: #86b6d6;
+}
+
+.small-screen-button {
+  color: white;
+  background: #15517c;
+  border-color: #3b83b4;
+}
+
+.atm-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 16px;
+  border: 1px solid #32688e;
+}
+
+.atm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.atm-table th {
+  padding: 12px;
+  color: #9fd4f5;
+  background: #123d5e;
+  text-align: left;
+  font: 9px 'DM Mono', monospace;
+}
+
+.atm-table td {
+  padding: 12px;
+  color: #e1eff9;
+  border-top: 1px solid #ffffff16;
+}
+
+.atm-table tr:nth-child(even) {
+  background: #ffffff08;
+}
+
+.empty-statement {
+  padding: 35px 10px;
+  text-align: center;
+  color: #a8c8df;
+}
+
+.empty-statement span {
+  font-size: 35px;
+}
+
+.empty-statement h3 {
+  font: 700 13px Manrope;
+}
+
+.empty-statement p {
+  font-size: 11px;
+}
+
+.screen-alert {
+  padding: 11px 13px;
+  margin: 9px 0;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.error-alert {
+  color: #ffd7d4;
+  background: #772e345c;
+  border: 1px solid #b6575c;
+}
+
+.success-alert {
+  color: #c4f9df;
+  background: #145b405e;
+  border: 1px solid #399a71;
+}
+
+/* ==========================================
+   ADMIN DASHBOARD
+========================================== */
+
+.admin-page {
+  min-height: 100vh;
+  color: #17243a;
+  background: #f1f5fa;
+}
+
+.admin-header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 max(20px, calc((100vw - 1250px) / 2));
+  background: #fff;
+  border-bottom: 1px solid #dfe7f0;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-logo {
+  width: 45px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: white;
+  background: #10528b;
+  font: 800 15px Manrope;
+}
+
+.admin-brand strong,
+.admin-brand small {
+  display: block;
+}
+
+.admin-brand strong {
+  font: 800 13px Manrope;
+  color: #153451;
+}
+
+.admin-brand small {
+  color: #7a8ca0;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.admin-exit {
+  padding: 10px 15px;
+  color: white;
+  background: #154e7e;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-content {
+  width: min(100% - 32px, 1250px);
+  margin: auto;
+  padding: 35px 0;
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.admin-title span:first-child {
+  color: #6c8298;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+}
+
+.admin-title h1 {
+  margin: 6px 0;
+  color: #18334d;
+  font: 800 28px Manrope;
+}
+
+.admin-badge {
+  padding: 8px 12px;
+  border-radius: 30px;
+  background: #e1effb;
+  color: #175c91;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.admin-tabs button {
+  padding: 11px 16px;
+  color: #587089;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.admin-tabs button.selected {
+  color: #0c4c83;
+  background: #dcecfb;
+  font-weight: 800;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 13px;
+}
+
+.admin-stat,
+.admin-panel {
+  background: white;
+  border: 1px solid #e0e8f0;
+  border-radius: 9px;
+  padding: 19px;
+  box-shadow: 0 4px 15px #15345108;
+}
+
+.admin-stat span {
+  display: block;
+  color: #71849a;
+  font-size: 11px;
+}
+
+.admin-stat strong {
+  display: block;
+  margin-top: 12px;
+  color: #174e7d;
+  font: 800 21px Manrope;
+  overflow-wrap: anywhere;
+}
+
+.admin-panel {
+  margin: 16px 0;
+  min-width: 0;
+}
+
+.admin-panel h2 {
+  color: #1b3d5c;
+  font: 700 17px Manrope;
+  margin: 0 0 17px;
+}
+
+.admin-create-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 11px;
+}
+
+.admin-create-form input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #d7e1eb;
+  border-radius: 5px;
+  padding: 10px;
+  color: #1b3146;
+  outline: none;
+}
+
+.admin-create-form input:focus {
+  border-color: #438dc6;
+}
+
+.admin-primary {
+  padding: 12px;
+  color: white;
+  background: #14588f;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.admin-table th {
+  padding: 13px;
+  text-align: left;
+  color: #73859a;
+  background: #f3f7fb;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.admin-table td {
+  padding: 13px;
+  color: #43566c;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.admin-empty {
+  color: #8091a4;
+  font-size: 12px;
+}
+
+.admin-error {
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
+  color: #9b3434;
+  background: #fff0ef;
+  font-size: 12px;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 760px) {
+  .atm-page {
+    padding: 12px 7px 25px;
+  }
+
+  .atm-machine {
+    padding: 12px 10px 17px;
+    border-radius: 18px;
+  }
+
+  .machine-top {
+    padding: 0 5px 12px;
+  }
+
+  .machine-brand strong {
+    font-size: 11px;
+  }
+
+  .machine-brand span {
+    font-size: 8px;
+  }
+
+  .brand-symbol {
+    width: 43px;
+    height: 39px;
+    font-size: 15px;
+  }
+
+  .machine-indicator {
+    font-size: 8px;
+  }
+
+  .machine-bezel {
+    padding: 7px;
+  }
+
+  .screen {
+    min-height: 550px;
+  }
+
+  .customer-screen {
+    padding: 12px;
+  }
+
+  .hardware {
+    grid-template-columns: 55px 1fr 75px;
+    gap: 5px;
+    padding: 15px 0 0;
+  }
+
+  .hardware-center {
+    gap: 10px;
+  }
+
+  .hardware-section {
+    min-width: 85px;
+    font-size: 7px;
+  }
+
+  .card-reader-slot,
+  .receipt-slot {
+    width: 65px;
+  }
+
+  .cash-slot {
+    width: 90px;
+  }
+
+  .side-buttons {
+    width: 40px;
+    gap: 9px;
+  }
+
+  .side-buttons span {
+    height: 17px;
+  }
+
+  .physical-keypad {
+    grid-template-columns: repeat(3, 20px);
+    gap: 5px;
+  }
+
+  .physical-keypad span {
+    height: 21px;
+    font-size: 9px;
+  }
+
+  .speaker-grille {
+    width: 50px;
+  }
+
+  .atm-menu-grid {
+    gap: 8px;
+  }
+
+  .atm-menu-button {
+    min-height: 70px;
+    padding: 9px;
+    gap: 8px;
+  }
+
+  .menu-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .atm-menu-button > span:nth-child(2) {
+    font-size: 8px;
+  }
+
+  .screen-userbar strong {
+    font-size: 11px;
+  }
+
+  .screen-userbar button {
+    font-size: 8px;
+    padding: 8px;
+  }
+
+  .screen-page-title {
+    font-size: 9px;
+  }
+
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  .machine-indicator {
+    font-size: 0;
+  }
+
+  .machine-indicator .indicator-light {
+    width: 10px;
+    height: 10px;
+  }
+
+  .screen-status {
+    font-size: 7px;
+  }
+
+  .screen-bottom {
+    font-size: 6px;
+  }
+
+  .welcome-screen {
+    padding: 18px 8px;
+  }
+
+  .card-animation {
+    gap: 9px;
+  }
+
+  .demo-card {
+    width: 125px;
+    height: 78px;
+  }
+
+  .card-slot {
+    width: 50px;
+  }
+
+  .atm-menu-button {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .atm-menu-button b {
+    display: none;
+  }
+
+  .atm-menu-button > span:nth-child(2) {
+    min-height: 24px;
+  }
+
+  .preset-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .screen-actions {
+    flex-direction: column;
+  }
+
+  .admin-content {
+    width: calc(100% - 22px);
+    padding-top: 22px;
+  }
+
+  .admin-create-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-title h1 {
+    font-size: 22px;
+  }
+}
